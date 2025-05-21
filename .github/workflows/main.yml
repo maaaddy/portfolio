@@ -20,7 +20,7 @@ jobs:
           node-version: 18
 
       - name: 📦 Install & Build Client
-        working-directory: ./client
+        working-directory: ./frontend
         run: |
           npm install
           npm run build
