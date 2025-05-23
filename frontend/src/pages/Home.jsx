@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { Typewriter } from 'react-simple-typewriter';
 import '../Home.css';
+import { FaLinkedin, FaGithub, FaEnvelope } from 'react-icons/fa';
 
 const skills = [
   'React', 'JavaScript', 'Tailwind', 'MongoDB', 'SQL', 
@@ -132,41 +133,107 @@ const Home = () => {
 
       <section id="projects" className="section text-center">
         <div className="container">
-          <h2 className="section-title">Projects</h2>
-          <div className="project-list">
-            <div className="project-item">
-              <h3 className="project-title">WhiskAway</h3>
-              <p className="project-description">MERN stack recipe web-app with auth, API integration, and Nginx deployment.</p>
-              <a href="https://whiskaway.food" target="_blank" rel="noreferrer" className="project-link">View Project</a>
+            <h2 className="section-title">Projects</h2>
+            <p classname="section-content pb-4">Click on a project to get specific information.</p><br></br>
+            <div className="project-list">
+            <a href="/projects/whiskaway" className="project-card tape-5">
+                <h3 className="project-title">WhiskAway</h3>
+                <p className="project-description">MERN stack recipe web-app with auth, API integration, and Nginx deployment.</p>
+            </a>
+            <a href="/projects/todo" className="project-card tape-2">
+                <h3 className="project-title">To Do</h3>
+                <p className="project-description">Task managing, virtual bulletin board web-app built with MERN stack.</p>
+            </a>
+            <a href="/projects/random-retail" className="project-card tape-4">
+                <h3 className="project-title">Random Retail</h3>
+                <p className="project-description">Team project - Phoenix + Elixir marketplace web-app styled with Tailwind. Nginx deployment.</p>
+            </a>
+            <a href="/projects/arduino-car" className="project-card tape-3">
+                <h3 className="project-title">Arduino Car</h3>
+                <p className="project-description">Bluetooth-controlled car built with Arduino and phone integration for controller.</p>
+            </a>
+            <a href="/#projects" className="project-card tape-1">
+                <h3 className="project-title">Personal Portfolio</h3>
+                <p className="project-description">This personal portfolio website. Created to display my skills efficiently.</p>
+            </a>
             </div>
-            <div className="project-item">
-              <h3 className="project-title">ToDo</h3>
-              <p className="project-description">Task managing, virtual bulletin board web-app built with MERN stack.</p>
-            </div>
-            <div className="project-item">
-              <h3 className="project-title">Random Retail</h3>
-              <p className="project-description">Team project - Phoenix + Elixir marketplace web-app styled with Tailwind.</p>
-              <a href="https://randomretail.shop" target="_blank" rel="noreferrer" className="project-link">View Project</a>
-            </div>
-            <div className="project-item">
-              <h3 className="project-title">Arduino Car</h3>
-              <p className="project-description">Bluetooth-controlled car built with Arduino and phone integration for controller.</p>
-            </div>
-          </div>
         </div>
       </section>
 
-      <section id="contact" className="section bg-light text-center">
+      <section id="writings" className="section text-center">
         <div className="container">
-          <h2 className="section-title">Contact Me</h2>
-          <p className="section-content">Let's connect about opportunities or collaborations.</p>
-          <div className="contact-buttons mt-3">
-            <a href="mailto:maddylconway@gmail.com" className="btn btn-outline-dark me-3">Email</a>
-            <a href="https://www.linkedin.com/in/madison-conway-88aa84236/" className="btn btn-outline-success me-3" target="_blank" rel="noreferrer">LinkedIn</a>
-            <a href="https://github.com/maaaddy" className="btn btn-outline-dark" target="_blank" rel="noreferrer">GitHub</a>
-          </div>
+            <h2 className="section-title">Writings</h2>
+            <p>Take a look at the articles I've written on CS topics!</p>
+            <div className="writing-card">
+            <img src="/mern-stack.png" alt="MERN Stack Article" className="writing-thumbnail" />
+            <div className="writing-info">
+                <h4>Mastering the MERN Stack: A Tutorial for Beginners</h4>
+                <p>Information you need to know to get started with MongoDB, Express, React, and Node.js - with a tutorial.</p>
+                <a href="https://www.linkedin.com/pulse/mastering-mern-stack-tutorial-beginners-madison-conway-fkvve" target="_blank" rel="noreferrer" className="writing-link">Read More →</a>
+            </div>
+            </div>
+
+            <div className="writing-card">
+            <img src="/sorting-algorithms.png" alt="MERN Stack Article" className="writing-thumbnail" />
+            <div className="writing-info">
+                <h4>Sorting Algorithms: What They Are & When to Use Them</h4>
+                <p>A beginner-friendly explanation of various sorting algorithms, time-complexities, and how to choose between them.</p>
+                <a href="https://www.linkedin.com/pulse/sorting-algorithms-what-when-use-them-madison-conway-wyybe" target="_blank" rel="noreferrer" className="writing-link">Read More →</a>
+            </div>
+            </div>
+
+            <div className="writing-card">
+            <img src="/what-is-react.png" alt="MERN Stack Article" className="writing-thumbnail" />
+            <div className="writing-info">
+                <h4>What is ReactJS?</h4>
+                <p>Exploring the fundamentals of React: A clear introduction to what React is, why it's popular, and how it changes the way we build websites.</p>
+                <a href="https://www.linkedin.com/pulse/what-reactjs-madison-conway-jwime" target="_blank" rel="noreferrer" className="writing-link">Read More →</a>
+            </div>
+            </div>
         </div>
       </section>
+
+
+      <section id="contact" className="section text-center">
+        <div className="container">
+            <img
+            src="/madison2.jpg"
+            alt="Madison Conway"
+            style={{
+                width: '200px',
+                height: '200px',
+                borderRadius: '50%',
+                objectFit: 'cover',
+                marginBottom: '1.5rem'
+            }}
+            />
+            <p style={{ color: '#2b4832' }}>Madison Conway • Based in New England</p>
+            <h2 className="section-title">Contact Me</h2>
+            
+            <p className="section-content mb-2">I’m always open to new opportunities, collaborations, and connections!</p>
+            <a
+            href="/Madison_Conway_Resume_2025.pdf"
+            download
+            className="btn btn-success mt-3"
+            style={{ padding: '10px 20px', fontWeight: '500', fontSize: '1rem' }}
+            >
+            Download My Resume
+            </a>
+
+            <div className="social-icons mt-4">
+            <a href="mailto:maddylconway@gmail.com" target="_blank" rel="noreferrer" className="icon-link">
+                <FaEnvelope />
+            </a>
+            <a href="https://www.linkedin.com/in/madison-conway-88aa84236/" target="_blank" rel="noreferrer" className="icon-link">
+                <FaLinkedin />
+            </a>
+            <a href="https://github.com/maaaddy" target="_blank" rel="noreferrer" className="icon-link">
+                <FaGithub />
+            </a>
+            </div>
+        </div>
+      </section>
+      <p className='m-3 text-center' style={{ color: '#2b4832' }}>Designed & built by Madison Conway • © 2025</p>
     </main>
   );
 };

@@ -1,6 +1,7 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../Topbar.css';
+import { HashLink } from 'react-router-hash-link';
 
 const Topbar = () => {
   return (
@@ -24,19 +25,19 @@ const Topbar = () => {
       <div className="collapse navbar-collapse" id="topbarNav">
         <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
           <li className="nav-item">
-            <a className="nav-link" href="#about">About</a>
+            <HashLink smooth to="/#about" className="nav-link">About</HashLink>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#skills">Skills</a>
+            <HashLink smooth to="/#skills" className="nav-link">Skills</HashLink>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#projects">Projects</a>
+            <HashLink smooth to="/#projects" className="nav-link">Projects</HashLink>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#resume">Resume</a>
+            <HashLink smooth to="/#writings" className="nav-link">Writings</HashLink>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#contact">Contact Me</a>
+            <HashLink smooth to="/#contact" className="nav-link">Contact</HashLink>
           </li>
         </ul>
       </div>
