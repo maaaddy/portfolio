@@ -106,10 +106,39 @@ body {
 .skills-grid {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  gap: 40px 30px;
+  gap: 30px 20px;
   max-width: 1000px;
   margin: 0 auto;
   padding-top: 40px;
+}
+
+@media (max-width: 1024px) {
+  .skills-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .skills-grid {
+    grid-template-columns: repeat(3, 1fr);
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+    justify-content: center;
+  }
+
+  .skill-item {
+    font-size: 0.8rem;
+  }
+
+  .skill-item img {
+    width: 36px;
+    height: 36px;
+  }
 }
 
 .skill-item {
