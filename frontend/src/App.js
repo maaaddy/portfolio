@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 
 import TopBar from './components/TopBar/TopBar';
 import Home from './pages/Home';
@@ -18,6 +18,7 @@ function App() {
         <Route path='/projects/todo' element={<ToDo />} />
         <Route path='/projects/random-retail' element={<RandomRetail />} />
         <Route path='/projects/arduino-car' element={<ArduinoCar />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </Router>
   );

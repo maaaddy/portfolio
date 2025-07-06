@@ -174,7 +174,7 @@ const Home = () => {
             </div>
 
             <div className="writing-card">
-            <img src="/sorting-algorithms.png" alt="MERN Stack Article" className="writing-thumbnail" />
+            <img src="/sorting-algorithms.png" alt="Sorting Algorithms Article" className="writing-thumbnail" />
             <div className="writing-info">
                 <h4>Sorting Algorithms: What They Are & When to Use Them</h4>
                 <p>A beginner-friendly explanation of various sorting algorithms, time-complexities, and how to choose between them.</p>
@@ -183,11 +183,20 @@ const Home = () => {
             </div>
 
             <div className="writing-card">
-            <img src="/what-is-react.png" alt="MERN Stack Article" className="writing-thumbnail" />
+            <img src="/what-is-react.png" alt="React Article" className="writing-thumbnail" />
             <div className="writing-info">
                 <h4>What is ReactJS?</h4>
                 <p>Exploring the fundamentals of React: A clear introduction to what React is, why it's popular, and how it changes the way we build websites.</p>
                 <a href="https://www.linkedin.com/pulse/what-reactjs-madison-conway-jwime" target="_blank" rel="noreferrer" className="writing-link">Read More →</a>
+            </div>
+            </div>
+
+            <div className="writing-card">
+            <img src="/agile.png" alt="Agile Development Article" className="writing-thumbnail" />
+            <div className="writing-info">
+                <h4>What is Agile Development?</h4>
+                <p>Introducing Agile development, going over the phases, and looking into what types of frameworks and tools are used in the industry. </p>
+                <a href="https://www.linkedin.com/pulse/what-agile-development-madison-conway-u7qhe" target="_blank" rel="noreferrer" className="writing-link">Read More →</a>
             </div>
             </div>
         </div>
