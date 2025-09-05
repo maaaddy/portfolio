@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { Typewriter } from 'react-simple-typewriter';
 import '../Home.css';
 import { FaLinkedin, FaGithub, FaEnvelope } from 'react-icons/fa';
+import ProjectShowcase from "../components/ProjectShowcase";
 
 const skills = [
   'React', 'JavaScript', 'Tailwind', 'MongoDB', 'SQL', 
@@ -131,34 +132,121 @@ const Home = () => {
         </div>
       </section>
 
-      <section id="projects" className="section text-center">
+      <section id="education" className="section text-center" ref={skillsRef}>
         <div className="container">
-            <h2 className="section-title">Projects</h2>
-            <p classname="section-content pb-4">Click on a project to get specific information.</p><br></br>
-            <div className="project-list">
-            <a href="/projects/whiskaway" className="project-card tape-5">
-                <h3 className="project-title">WhiskAway</h3>
-                <p className="project-description">MERN stack recipe web-app with auth, API integration, and Nginx deployment.</p>
-            </a>
-            <a href="/projects/todo" className="project-card tape-2">
-                <h3 className="project-title">To Do</h3>
-                <p className="project-description">Task managing, virtual bulletin board web-app built with MERN stack.</p>
-            </a>
-            <a href="/projects/random-retail" className="project-card tape-4">
-                <h3 className="project-title">Random Retail</h3>
-                <p className="project-description">Team project - Phoenix + Elixir marketplace web-app styled with Tailwind. Nginx deployment.</p>
-            </a>
-            <a href="/projects/arduino-car" className="project-card tape-3">
-                <h3 className="project-title">Arduino Car</h3>
-                <p className="project-description">Bluetooth-controlled car built with Arduino and phone integration for controller.</p>
-            </a>
-            <a href="/#projects" className="project-card tape-1">
-                <h3 className="project-title">Personal Portfolio</h3>
-                <p className="project-description">This personal portfolio website. Created to display my skills efficiently.</p>
-            </a>
+          <h2 className="section-title">Education & Certifications</h2>
+
+          <div className="row justify-content-center text-start">
+            <div className="col-lg-5">
+              <h3 className="h5 mt-3 mb-3">Certifications</h3>
+              <ul className="list-unstyled mb-0">
+                <li className="mb-4">
+                  <strong>Scrum Fundamentals Certified — SCRUMstudy</strong><br />
+                  <small className="text-muted d-block">Issued July 2025 • No Expiration</small>
+                  <small className="text-muted d-block">
+                    Relevant Skills: Scrum framework, Agile methodologies, sprint planning, backlog management, cross-functional collaboration
+                  </small>
+                </li>
+
+                <li className="mb-4">
+                  <strong>AWS Certified Cloud Practitioner (In Progress)</strong><br />
+                  <small className="text-muted d-block">Expected September 2025</small>
+                  <small className="text-muted d-block">
+                    Relevant Skills: AWS EC2, S3, Lambda; cloud security; load balancing; cost optimization; cloud architecture principles
+                  </small>
+                </li>
+
+                <li className="mb-4">
+                  <strong>Introduction to Large Language Models — IBM SkillsBuild</strong><br />
+                  <small className="text-muted d-block">Issued March 2025</small>
+                  <small className="text-muted d-block">
+                    Relevant Skills: Large language models, prompt engineering, NLP, ethical AI practices
+                  </small>
+                </li>
+              </ul>
             </div>
+
+            <div className="col-lg-5 mt-5 mt-lg-0">
+              <h3 className="h5 mb-3 mt-3">Education</h3>
+              <ul className="list-unstyled mb-0">
+                <li className="mb-4">
+                  <strong>Plymouth State University — Plymouth, NH</strong><br />
+                  <small className="text-muted d-block">
+                    B.S. in Computer Science, Minor in Cybersecurity • Cumulative GPA: 3.58/4.0
+                  </small>
+                  <small className="text-muted d-block">Graduated May 2025</small>
+                  <small className="text-muted d-block">
+                    Relevant Coursework: Software Engineering; Operating Systems; Systems Programming in C/C++; Systems Analysis and Design; Data Structures and Intermediate Programming; Database Management Systems; Algorithm Analysis
+                  </small>
+                  <small className="text-muted d-block">
+                    Honors: University Honors Program, TRIO Scholars Program
+                  </small>
+                </li>
+
+                <li className="mb-0">
+                  <strong>Pinkerton Academy — Derry, NH</strong><br />
+                  <small className="text-muted d-block">High School Diploma • Graduated 2021</small>
+                  <small className="text-muted d-block">
+                    VEX Robotics Team Captain (Team 241D): Coordinated competitions, performed community service, collaborated on programming, robot building, documentation, and design
+                  </small>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
       </section>
+
+      <ProjectShowcase
+        projects={[
+          {
+            title: "WhiskAway",
+            description:
+              "A social recipe web app with user authentication, recipe saving, and recipe sharing. MERN stack, API integrations, and Nginx deploy.",
+            tech: ["Javascript", "React", "Express", "MongoDB", "Node", "Nginx", "Tailwind"],
+            image: "./whiskawaypic.jpg",
+            github: "https://github.com/maaaddy/whiskaway2",
+            link: "https://whiskaway.food",
+            write: "/projects/whiskaway",
+          },
+          {
+            title: "AI Writing Assist",
+            description:
+              "Fine-tuned a LLM to mirror my writing style in order to more efficiently communicate in professional settings. Ensures that my writing stays authentic.",
+            tech: ["Javascript", "React", "Node", "OpenAI", "Tailwind"],
+            image: "./writing.jpg",
+            github: "https://github.com/maaaddy/AI-Writing-Assist",
+            write: "/projects/aiwriting",
+          },
+          {
+            title: "Random Retail",
+            description:
+              "Team-built marketplace in Phoenix + Elixir. Features user/seller chat with Tailwind styling and Nginx deployment.",
+            tech: ["Phoenix", "Elixir", "Tailwind", "Nginx"],
+            image: "./randomretail.jpg",
+            github: "https://github.com/CS4140Team45/gregslist",
+            link: "https://randomretail.shop",
+            write: "/projects/random-retail",
+          },
+          {
+            title: "To Do - Bulletin Board",
+            description:
+              "Task manager / bulletin board built on the MERN stack with drag-n-drop niceties.",
+            tech: ["Javascript", "MongoDB", "Express", "React", "Node"],
+            image: "./to_do.jpeg",
+            github: "https://github.com/maaaddy/todo",
+            write: "/projects/todo",
+          },
+          {
+            title: "Arduino Car",
+            description:
+              "Created a bluetooth-controlled car using Arduino, with motor control and phone integration. Used to play 'Red Light, Green Light.'",
+            tech: ["Arduino", "Bluetooth", "C+"],
+            image: "./to_do.jpeg",
+            github: "https://github.com/maaaddy/car",
+            write: "/projects/arduino-car",
+          },
+        ]}
+      />
 
       <section id="writings" className="section text-center">
         <div className="container">

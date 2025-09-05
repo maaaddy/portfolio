@@ -31,6 +31,9 @@ const Topbar = () => {
             <HashLink smooth to="/#skills" className="nav-link">Skills</HashLink>
           </li>
           <li className="nav-item">
+            <HashLink smooth to="/#education" className="nav-link">Education</HashLink>
+          </li>
+          <li className="nav-item">
             <HashLink smooth to="/#projects" className="nav-link">Projects</HashLink>
           </li>
           <li className="nav-item">

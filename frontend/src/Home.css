@@ -94,15 +94,6 @@ body {
   color: white;
 }
 
-#skills {
-  background-color: #f0f4f1;
-  padding: 120px 0;
-}
-
-#writings {
-  background-color: #f0f4f1;
-}
-
 .skills-grid {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
