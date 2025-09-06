@@ -1027,6 +1027,7 @@ html, body {
   max-width: 1040px;
   padding-inline: clamp(1rem, 4vw, 3rem);
   text-align: center;
+  z-index: 3;
 }
 
 .footer-text {

@@ -8,11 +8,17 @@ import ToDo from './pages/Projects/ToDo';
 import AiWriting from './pages/Projects/AiWriting';
 import RandomRetail from './pages/Projects/RandomRetail';
 import ArduinoCar from './pages/Projects/ArduinoCar';
+import SideBar from './components/SideBar/SideBar';
 
 function App() {
   return (
     <Router>
       <TopBar />
+      <SideBar
+        github="https://github.com/maaaddy"
+        linkedin="https://www.linkedin.com/in/madison-conway-88aa84236/"
+        email="mailto:maddylconway@gmail.com"
+      />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path='/projects/whiskaway' element={<WhiskAway />} />
