@@ -1,8 +1,10 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Typewriter } from 'react-simple-typewriter';
 import '../Home.css';
-import { FaLinkedin, FaGithub, FaEnvelope } from 'react-icons/fa';
+import { FaLinkedin, FaGithub, FaEnvelope, FaPaperclip, FaGraduationCap, FaPalette, FaSnowflake, FaLaptop } from 'react-icons/fa';
 import ProjectShowcase from "../components/ProjectShowcase";
+import { FiExternalLink } from 'react-icons/fi';
+
 
 const skills = [
   'React', 'JavaScript', 'Tailwind', 'MongoDB', 'SQL', 
@@ -56,19 +58,44 @@ const Home = () => {
     }
   }, []);
 
+  useEffect(() => {
+  let rafId;
+  const root = document.documentElement;
+
+  const onMove = (e) => {
+    cancelAnimationFrame(rafId);
+    rafId = requestAnimationFrame(() => {
+      root.style.setProperty('--lx', `${e.clientX}px`);
+      root.style.setProperty('--ly', `${e.clientY}px`);
+    });
+  };
+
+  window.addEventListener('pointermove', onMove);
+  return () => {
+    window.removeEventListener('pointermove', onMove);
+    cancelAnimationFrame(rafId);
+  };
+}, []);
+
+
+  const [copied, setCopied] = useState(false);
+  const copyEmail = () => {
+    navigator.clipboard.writeText('maddylconway@gmail.com').then(() => {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1400);
+    });
+  };
+
+
   return (
     <main>
-      <section id="hero" className="hero-editorial text-center d-flex align-items-center justify-content-center">
+      <section id="hero" className="hero-wrap">
         <div className="container">
-          <img
-            src="/madison.jpg"
-            alt="Madison Conway"
-            className="hero-image rounded-circle mb-4"
-            style={{ width: '240px', height: '240px', objectFit: 'cover', objectPosition: 'center' }}
-          />
-          <h1 className="hero-title">Hi, I'm Madison Conway.</h1>
-          <p className="hero-subtitle">
-            <span style={{ color: '#7aa88e', fontWeight: 'bold' }}>
+          <div className="hero-center">
+            <p className="hero-kicker">Software • UX • Web</p>
+            <h1 className="hero-title">Hi, I'm Madison Conway.</h1>
+
+            <p className="hero-type">
               <Typewriter
                 words={[
                   'Aspiring Software Engineer',
@@ -83,114 +110,220 @@ const Home = () => {
                 deleteSpeed={40}
                 delaySpeed={1500}
               />
-            </span>
-          </p>
-          <div className="hero-buttons d-flex justify-content-center gap-3 mt-4">
-            <a href="#about" className="btn btn-success btn-lg px-4">Education</a>
-            <a href="#projects" className="btn btn-outline-success btn-lg px-4">My Projects</a>
-          </div>
-        </div>
-      </section>
+            </p>
 
-      <section id="about" className="section text-center">
-        <div className="container">
-          <h2 className="section-title">About Myself</h2>
-          <p className="section-content">
-            I’m a Computer Science graduate from Plymouth State University with a minor in Cybersecurity.
-            I'm super passionate about technology, dedicated to helping others, and I am always ready to take 
-            on a new challenge. 
-          </p> 
-          <br />
-          <img src="/hat.jpeg" alt="Madison Conway" className="about-image mb-4 mx-4" style={{ width: '240px', height: '240px', objectFit: 'cover', objectPosition: 'center' }} />
-          <img src="/psu.jpg" alt="Madison Conway" className="about-image mb-4 mx-4" style={{ width: '240px', height: '240px', objectFit: 'cover', objectPosition: 'center' }} />
-          <img src="/snowboard.jpg" alt="Madison Conway" className="about-image mb-4 mx-4" style={{ width: '240px', height: '240px', objectFit: 'cover', objectPosition: 'center' }} />
-          <br />
-          <p className="section-content">
-            Looking past coding and expanding my Software Engineering knowledge, some of
-            my hobbies include painting, drawing, and sketching. I also snowboard and love to experience nature! 
-            Through everything, I'm always pursuing my passion for creativity and art, which is where I believe I found my love for 
-            designing software!
-          </p>
-        </div>
-      </section>
-
-      <section id="skills" className="section text-center" ref={skillsRef}>
-        <div className="container">
-          <h2 className="section-title">Skills</h2>
-          <div className="skills-grid">
-            {skills.map((skill, index) => (
-              <div key={index} className="skill-item">
-                <img 
-                src={`/${skillToIcon[skill]}`} 
-                alt={skill} 
-                style={{ width: '64px', height: '64px' }}
-                />
-                {skill}
+            <div className="hero-avatar">
+        <img src="/madison.jpg" alt="Madison Conway" />
+      </div>
+            <div className="palette">
+              <div className="palette-head">
+                <span className="dot red"></span>
+                <span className="dot yellow"></span>
+                <span className="dot green"></span>
+                <span className="palette-path">madison@portfolio: ~</span>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
-      <section id="education" className="section text-center" ref={skillsRef}>
-        <div className="container">
-          <h2 className="section-title">Education & Certifications</h2>
+              <div className="prompt">
+                <span className="blip" aria-hidden="true"></span>
+                <span className="caret">$</span>
+                <span>Type a command or choose below…</span>
+              </div>
 
-          <div className="row justify-content-center text-start">
-            <div className="col-lg-5">
-              <h3 className="h5 mt-3 mb-3">Certifications</h3>
-              <ul className="list-unstyled mb-0">
-                <li className="mb-4">
-                  <strong>Scrum Fundamentals Certified — SCRUMstudy</strong><br />
-                  <small className="text-muted d-block">Issued July 2025 • No Expiration</small>
-                  <small className="text-muted d-block">
-                    Relevant Skills: Scrum framework, Agile methodologies, sprint planning, backlog management, cross-functional collaboration
-                  </small>
-                </li>
-
-                <li className="mb-4">
-                  <strong>AWS Certified Cloud Practitioner (In Progress)</strong><br />
-                  <small className="text-muted d-block">Expected September 2025</small>
-                  <small className="text-muted d-block">
-                    Relevant Skills: AWS EC2, S3, Lambda; cloud security; load balancing; cost optimization; cloud architecture principles
-                  </small>
-                </li>
-
-                <li className="mb-4">
-                  <strong>Introduction to Large Language Models — IBM SkillsBuild</strong><br />
-                  <small className="text-muted d-block">Issued March 2025</small>
-                  <small className="text-muted d-block">
-                    Relevant Skills: Large language models, prompt engineering, NLP, ethical AI practices
-                  </small>
-                </li>
-              </ul>
+              <div className="commands">
+                <a className="cmd" href="#projects">open projects</a>
+                <a className="cmd" href="/Madison_Conway.pdf" download>download resume</a>
+                <a className="cmd" href="#skills">show skills</a>
+                <a className="cmd" href="#education">view education</a>
+                <a className="cmd" href="#contact">contact me</a>
+              </div>
             </div>
 
-            <div className="col-lg-5 mt-5 mt-lg-0">
-              <h3 className="h5 mb-3 mt-3">Education</h3>
-              <ul className="list-unstyled mb-0">
-                <li className="mb-4">
-                  <strong>Plymouth State University — Plymouth, NH</strong><br />
-                  <small className="text-muted d-block">
-                    B.S. in Computer Science, Minor in Cybersecurity • Cumulative GPA: 3.58/4.0
-                  </small>
-                  <small className="text-muted d-block">Graduated May 2025</small>
-                  <small className="text-muted d-block">
-                    Relevant Coursework: Software Engineering; Operating Systems; Systems Programming in C/C++; Systems Analysis and Design; Data Structures and Intermediate Programming; Database Management Systems; Algorithm Analysis
-                  </small>
-                  <small className="text-muted d-block">
-                    Honors: University Honors Program, TRIO Scholars Program
-                  </small>
-                </li>
+            <div className="hero-stats">
+              <span className="hero-chip">Driven</span>
+              <span className="hero-chip">Team Player</span>
+              <span className="hero-chip">Agile Mindset</span>
+              <span className="hero-chip">Dedicated</span>
+            </div>
+          </div>
+        </div>
+      </section>
 
-                <li className="mb-0">
-                  <strong>Pinkerton Academy — Derry, NH</strong><br />
-                  <small className="text-muted d-block">High School Diploma • Graduated 2021</small>
-                  <small className="text-muted d-block">
-                    VEX Robotics Team Captain (Team 241D): Coordinated competitions, performed community service, collaborated on programming, robot building, documentation, and design
-                  </small>
-                </li>
+      <section id="about" className="about-wrap">
+        <div className="container">
+          <div className="d-flex align-items-center gap-3 mb-5">
+          <div className="flex-grow-1 border-top" style={{ borderColor: '#325c58ff', opacity: 0.9 }}></div>
+          <h2 className=""><span className="fp-head m-0">About myself ★</span></h2>
+        </div>
+
+          <div className="about-timeline">
+            <article className="milestone">
+              <div className="m-marker"><FaGraduationCap /></div>
+              <p className="m-kicker">Origin</p>
+              <h3 className="m-title">PSU • CS + Cybersecurity</h3>
+              <p className="m-body">
+                I’m a Computer Science graduate from Plymouth State University with a minor in Cybersecurity.
+                I'm super passionate about technology, dedicated to helping others, and I am always ready to take on a new challenge.
+              </p>
+              <ul className="m-tags">
+                <li>Curious</li><li>Dedicated</li><li>Team player</li>
               </ul>
+            </article>
+
+            <article className="milestone">
+              <div className="m-marker"><FaPalette /></div>
+              <p className="m-kicker">Creative Spark</p>
+              <h3 className="m-title">Art + Design Mindset</h3>
+              <p className="m-body">
+                Looking past coding, and expanding my Software Engineering knowledge, some of my hobbies include
+                painting, drawing, and sketching. This is where I believe I found my love for designing software.
+              </p>
+              <ul className="m-tags">
+                <li>Sketching</li><li>Painting</li><li>Visual thinking</li>
+              </ul>
+            </article>
+
+            <article className="milestone">
+              <div className="m-marker"><FaSnowflake /></div>
+              <p className="m-kicker">Inspiration</p>
+              <h3 className="m-title">Snowboarding & Nature</h3>
+              <p className="m-body">
+                I also snowboard and I love to experience nature! I think this is what continues to keep me inspired. Through everything, I'm always pursuing my passions!
+              </p>
+              <ul className="m-tags">
+                <li>Flow state</li><li>Balance</li><li>Curiosity</li>
+              </ul>
+            </article>
+
+            <article className="milestone">
+              <div className="m-marker"><FaLaptop /></div>
+              <p className="m-kicker">Today</p>
+              <h3 className="m-title">Building & Collaborating</h3>
+              <p className="m-body">
+                I’m focused on building software that’s useful and thoughtful, with a strong eye for UX.
+                Always ready for the next challenge.
+              </p>
+              <ul className="m-tags">
+                <li>Frontend/UX</li><li>React</li><li>Teamwork</li>
+              </ul>
+            </article>
+          </div>
+
+          <div className="about-photos">
+            <div className="about-photo">
+              <img src="/hat.jpeg" alt="Madison Conway" />
+            </div>
+            <div className="about-photo">
+              <img src="/psu.jpg" alt="Plymouth State University" />
+            </div>
+            <div className="about-photo">
+              <img src="/snowboard.jpg" alt="Snowboarding" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="skills" className="skills-wrap text-center" ref={skillsRef}>
+        <div className="container">
+          <div className="d-flex align-items-center gap-3 mb-5">
+          <h2 className=""><span className="fp-head m-0">★ What have I worked with?</span></h2>
+          <div className="flex-grow-1 border-top" style={{ borderColor: '#325c58ff', opacity: 0.9 }}></div>
+        </div>
+
+          <div className="skills-card">
+            <p className="skills-kicker">Technical Skills</p>
+            <div className="skills-grid">
+              {skills.map((skill, index) => (
+                <div key={index} className="skill-item">
+                  <img
+                    src={`/${skillToIcon[skill]}`}
+                    alt={skill}
+                    aria-hidden={false}
+                  />
+                  {skill}
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="education" className="edu-wrap">
+        <div className="container">
+          <div className="d-flex align-items-center gap-3 mb-5">
+          <div className="flex-grow-1 border-top" style={{ borderColor: '#325c58ff', opacity: 0.9 }}></div>
+          <h2 className=""><span className="fp-head m-0">Education ★</span></h2>
+        </div>
+
+          <div className="edu-grid">
+            <div className="edu-card">
+              <p className="edu-kicker">Credentials</p>
+              <h3 className="edu-title">Certifications</h3>
+
+              <div className="edu-item">
+                <strong>Scrum Fundamentals Certified — SCRUMstudy</strong>
+                <small className="edu-meta">Issued July 2025 • No Expiration</small>
+                <ul className="edu-tags">
+                  <li>Scrum framework</li><li>Agile methodologies</li><li>Sprint planning</li>
+                  <li>Backlog mgmt</li><li>Collaboration</li>
+                </ul>
+              </div>
+
+              <div className="edu-divider" />
+
+              <div className="edu-item">
+                <strong>AWS Certified Cloud Practitioner (In Progress)</strong>
+                <small className="edu-meta">Expected September 2025</small>
+                <ul className="edu-tags">
+                  <li>EC2</li><li>S3</li><li>Lambda</li><li>Security</li>
+                  <li>Cost optimization</li><li>Cloud architecture</li>
+                </ul>
+              </div>
+
+              <div className="edu-divider" />
+
+              <div className="edu-item">
+                <strong>Introduction to Large Language Models — IBM SkillsBuild</strong>
+                <small className="edu-meta">Issued March 2025</small>
+                <ul className="edu-tags">
+                  <li>Large language models</li><li>Prompt engineering</li><li>NLP</li><li>Ethical AI</li>
+                </ul>
+              </div>
+            </div>
+
+            <div className="edu-card">
+              <p className="edu-kicker">Academic</p>
+              <h3 className="edu-title">Education</h3>
+
+              <div className="edu-item">
+                <strong>Plymouth State University — Plymouth, NH</strong>
+                <small className="edu-meta">
+                  B.S. in Computer Science, Minor in Cybersecurity • May 2025
+                </small>
+                <small className="edu-meta">GPA 3.58/4.0</small>
+                <ul className="edu-tags">
+                  <li>Software Engineering</li><li>Operating Systems</li><li>Systems Programming</li>
+                  <li>Systems Analysis & Design</li><li>Data Structures</li>
+                  <li>DBMS</li><li>Algorithm Analysis</li>
+                </ul>
+                <div className="edu-divider" />
+                <small className="edu-meta">Honor Societies</small>
+                <ul className="edu-tags">
+                  <li>University Honors Program</li><li>TRIO Scholars</li>
+                </ul>
+              </div>
+
+              <div className="edu-divider" />
+
+              <div className="edu-item">
+                <strong>Pinkerton Academy — Derry, NH</strong>
+                <small className="edu-meta">High School Diploma • Graduated 2021</small>
+                <ul className="edu-tags">
+                  <li>VEX Robotics Captain (241D)</li>
+                  <li>Programming & building</li>
+                  <li>Competition & documentation</li>
+                  <li>Community service & Fundraising</li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
@@ -241,96 +374,138 @@ const Home = () => {
             description:
               "Created a bluetooth-controlled car using Arduino, with motor control and phone integration. Used to play 'Red Light, Green Light.'",
             tech: ["Arduino", "Bluetooth", "C+"],
-            image: "./to_do.jpeg",
+            image: "./car.jpg",
             github: "https://github.com/maaaddy/car",
             write: "/projects/arduino-car",
           },
         ]}
       />
 
-      <section id="writings" className="section text-center">
+      <section id="writings" className="writings-wrap">
         <div className="container">
-            <h2 className="section-title">Writings</h2>
-            <p>Take a look at the articles I've written on CS topics!</p>
-            <div className="writing-card">
-            <img src="/mern-stack.png" alt="MERN Stack Article" className="writing-thumbnail" />
-            <div className="writing-info">
-                <h4>Mastering the MERN Stack: A Tutorial for Beginners</h4>
-                <p>Information you need to know to get started with MongoDB, Express, React, and Node.js - with a tutorial.</p>
-                <a href="https://www.linkedin.com/pulse/mastering-mern-stack-tutorial-beginners-madison-conway-fkvve" target="_blank" rel="noreferrer" className="writing-link">Read More →</a>
-            </div>
-            </div>
+                <div className="d-flex align-items-center gap-3 mb-5">
+                <div className="flex-grow-1 border-top" style={{ borderColor: '#325c58ff', opacity: 0.9 }}></div>
+                <h2 className=""><span className="fp-head m-0">Things I've written ★</span></h2>
+              </div>
 
-            <div className="writing-card">
-            <img src="/sorting-algorithms.png" alt="Sorting Algorithms Article" className="writing-thumbnail" />
-            <div className="writing-info">
-                <h4>Sorting Algorithms: What They Are & When to Use Them</h4>
-                <p>A beginner-friendly explanation of various sorting algorithms, time-complexities, and how to choose between them.</p>
-                <a href="https://www.linkedin.com/pulse/sorting-algorithms-what-when-use-them-madison-conway-wyybe" target="_blank" rel="noreferrer" className="writing-link">Read More →</a>
-            </div>
-            </div>
+          <div className="w-grid">
+            {/* MERN */}
+            <article className="w-card">
+              <div className="w-thumb">
+                <img src="/mern-stack.png" alt="MERN Stack article" />
+              </div>
+              <div className="w-body">
+                <p className="w-kicker">Tutorial</p>
+                <h3 className="w-title">Mastering the MERN Stack: A Tutorial for Beginners</h3>
+                <p className="w-excerpt">Information you need to know to get started with MongoDB, Express, React, and Node.js ~ with a tutorial.</p>
+                <div className="w-actions">
+                  <a className="w-read" href="https://www.linkedin.com/pulse/mastering-mern-stack-tutorial-beginners-madison-conway-fkvve" target="_blank" rel="noreferrer">
+                    Read <FiExternalLink />
+                  </a>
+                </div>
+              </div>
+            </article>
 
-            <div className="writing-card">
-            <img src="/what-is-react.png" alt="React Article" className="writing-thumbnail" />
-            <div className="writing-info">
-                <h4>What is ReactJS?</h4>
-                <p>Exploring the fundamentals of React: A clear introduction to what React is, why it's popular, and how it changes the way we build websites.</p>
-                <a href="https://www.linkedin.com/pulse/what-reactjs-madison-conway-jwime" target="_blank" rel="noreferrer" className="writing-link">Read More →</a>
-            </div>
-            </div>
+            <article className="w-card">
+              <div className="w-thumb">
+                <img src="/sorting-algorithms.png" alt="Sorting Algorithms article" />
+              </div>
+              <div className="w-body">
+                <p className="w-kicker">CS Basics</p>
+                <h3 className="w-title">Sorting Algorithms: What They Are & When to Use Them</h3>
+                <p className="w-excerpt">A beginner-friendly explanation of various sorting algorithms, time complexities, and how to choose between them.</p>
+                <div className="w-actions">
+                  <a className="w-read" href="https://www.linkedin.com/pulse/sorting-algorithms-what-when-use-them-madison-conway-wyybe" target="_blank" rel="noreferrer">
+                    Read <FiExternalLink />
+                  </a>
+                </div>
+              </div>
+            </article>
 
-            <div className="writing-card">
-            <img src="/agile.png" alt="Agile Development Article" className="writing-thumbnail" />
-            <div className="writing-info">
-                <h4>What is Agile Development?</h4>
-                <p>Introducing Agile development, going over the phases, and looking into what types of frameworks and tools are used in the industry. </p>
-                <a href="https://www.linkedin.com/pulse/what-agile-development-madison-conway-u7qhe" target="_blank" rel="noreferrer" className="writing-link">Read More →</a>
-            </div>
-            </div>
+            <article className="w-card">
+              <div className="w-thumb">
+                <img src="/what-is-react.png" alt="React article" />
+              </div>
+              <div className="w-body">
+                <p className="w-kicker">Frontend</p>
+                <h3 className="w-title">What is ReactJS?</h3>
+                <p className="w-excerpt">Exploring the fundamentals of React: what React is, why it's popular, and how it changes the way we build websites.</p>
+                <div className="w-actions">
+                  <a className="w-read" href="https://www.linkedin.com/pulse/what-reactjs-madison-conway-jwime" target="_blank" rel="noreferrer">
+                    Read <FiExternalLink />
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <article className="w-card">
+              <div className="w-thumb">
+                <img src="/agile.png" alt="Agile Development article" />
+              </div>
+              <div className="w-body">
+                <p className="w-kicker">Process</p>
+                <h3 className="w-title">What is Agile Development?</h3>
+                <p className="w-excerpt">Introducing Agile development, phases, and a quick look at frameworks and tools used in the industry.</p>
+                <div className="w-actions">
+                  <a className="w-read" href="https://www.linkedin.com/pulse/what-agile-development-madison-conway-u7qhe" target="_blank" rel="noreferrer">
+                    Read <FiExternalLink />
+                  </a>
+                </div>
+              </div>
+            </article>
+          </div>
         </div>
       </section>
 
-
-      <section id="contact" className="section text-center">
+      <section id="contact" className="writings-wrap" aria-labelledby="contact-title">
         <div className="container">
-            <img
-            src="/madison2.jpg"
-            alt="Madison Conway"
-            style={{
-                width: '200px',
-                height: '200px',
-                borderRadius: '50%',
-                objectFit: 'cover',
-                marginBottom: '1.5rem'
-            }}
-            />
-            <p style={{ color: '#2b4832' }}>Madison Conway • Based in New England</p>
-            <h2 className="section-title">Contact Me</h2>
-            
-            <p className="section-content mb-2">I’m always open to new opportunities, collaborations, and connections!</p>
-            <a
-            href="/Madison_Conway_Resume_2025.pdf"
-            download
-            className="btn btn-success mt-3"
-            style={{ padding: '10px 20px', fontWeight: '500', fontSize: '1rem' }}
-            >
-            Download My Resume
-            </a>
+          <div className="d-flex align-items-center gap-3 mb-5">
+            <h2 className=""><span className="fp-head m-0">★ Let's get in touch</span></h2>
+            <div className="flex-grow-1 border-top" style={{ borderColor: '#325c58ff', opacity: 0.9 }}></div>
+          </div>
+          <div className="contact-card glassy-onbrand" role="region" aria-label="Contact">
+            <div className="contact-top">
+              <img className="contact-avatar" src="/madison2.jpg" alt="Madison Conway smiling" loading="lazy" />
 
-            <div className="social-icons mt-4">
-            <a href="mailto:maddylconway@gmail.com" target="_blank" rel="noreferrer" className="icon-link">
-                <FaEnvelope />
-            </a>
-            <a href="https://www.linkedin.com/in/madison-conway-88aa84236/" target="_blank" rel="noreferrer" className="icon-link">
-                <FaLinkedin />
-            </a>
-            <a href="https://github.com/maaaddy" target="_blank" rel="noreferrer" className="icon-link">
-                <FaGithub />
-            </a>
+              <div className="contact-headings">
+                <h2 id="contact-title" className="contact-heading">Let’s connect</h2>
+                <p className="contact-sub">
+                  I’m always open to new opportunities, collaborations, and connections!
+                </p>
+              </div>
             </div>
+
+            <div className="contact-cta">
+              <a
+                className="btn btn-ghost"
+                href="/Madison_Conway.pdf"
+                download
+              >
+                <FaPaperclip style={{ marginRight: 8 }} /> Download Resume
+              </a>
+
+              <a className="btn btn-ghost" href="mailto:maddylconway@gmail.com">
+                <FaEnvelope style={{ marginRight: 8 }} /> Email Me
+              </a>
+
+              <a className="btn btn-ghost" href="https://www.linkedin.com/in/madison-conway-88aa84236/" target="_blank" rel="noreferrer">
+                <FaLinkedin style={{ marginRight: 8 }} /> LinkedIn
+              </a>
+              <a className="btn btn-ghost" href="https://github.com/maaaddy" target="_blank" rel="noreferrer">
+                <FaGithub style={{ marginRight: 8 }} /> GitHub
+              </a>
+            </div>
+            <p className="contact-note">Based in New England • Remote-friendly</p>
+          </div>
         </div>
       </section>
-      <p className='m-3 text-center' style={{ color: '#2b4832' }}>Designed & built by Madison Conway • © 2025</p>
+
+      <footer className="site-footer" role="contentinfo">
+        <div className="container">
+          <p className="footer-text">Designed &amp; Built by Madison Conway</p>
+        </div>
+      </footer>
+
     </main>
   );
 };
