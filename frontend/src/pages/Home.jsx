@@ -453,6 +453,22 @@ const Home = () => {
                 </div>
               </div>
             </article>
+
+            <article className="w-card">
+              <div className="w-thumb">
+                <img src="/data_structures.jpg" alt="Data Structures article" />
+              </div>
+              <div className="w-body">
+                <p className="w-kicker">CS Basics</p>
+                <h3 className="w-title">Data Structures & Algorithms</h3>
+                <p className="w-excerpt">How data structures and algorithms work together to make programs efficient / why choosing correctly is important.</p>
+                <div className="w-actions">
+                  <a className="w-read" href="https://www.linkedin.com/pulse/data-structures-algorithms-madison-conway-r477e" target="_blank" rel="noreferrer">
+                    Read <FiExternalLink />
+                  </a>
+                </div>
+              </div>
+            </article>
           </div>
         </div>
       </section>
