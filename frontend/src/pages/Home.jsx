@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Typewriter } from 'react-simple-typewriter';
 import '../Home.css';
 import { FaLinkedin, FaGithub, FaEnvelope, FaPaperclip, FaGraduationCap, FaPalette, FaSnowflake, FaLaptop } from 'react-icons/fa';
@@ -77,16 +77,6 @@ const Home = () => {
   };
 }, []);
 
-
-  const [copied, setCopied] = useState(false);
-  const copyEmail = () => {
-    navigator.clipboard.writeText('maddylconway@gmail.com').then(() => {
-      setCopied(true);
-      setTimeout(() => setCopied(false), 1400);
-    });
-  };
-
-
   return (
     <main>
       <section id="hero" className="hero-wrap">
@@ -131,7 +121,7 @@ const Home = () => {
 
               <div className="commands">
                 <a className="cmd" href="#projects">open projects</a>
-                <a className="cmd" href="/Madison_Conway.pdf" download>download resume</a>
+                <a className="cmd" href="/MadisonConway.pdf" download>download resume</a>
                 <a className="cmd" href="#skills">show skills</a>
                 <a className="cmd" href="#education">view education</a>
                 <a className="cmd" href="#contact">contact me</a>
@@ -469,6 +459,38 @@ const Home = () => {
                 </div>
               </div>
             </article>
+
+            <article className="w-card">
+              <div className="w-thumb">
+                <img src="/docker.png" alt="Data Structures article" />
+              </div>
+              <div className="w-body">
+                <p className="w-kicker">Technologies</p>
+                <h3 className="w-title">Understanding Docker</h3>
+                <p className="w-excerpt">Docker is a platform for building, running, and managing containers. But what does that actually mean?</p>
+                <div className="w-actions">
+                  <a className="w-read" href="https://www.linkedin.com/pulse/data-structures-algorithms-madison-conway-r477e" target="_blank" rel="noreferrer">
+                    Read <FiExternalLink />
+                  </a>
+                </div>
+              </div>
+            </article>
+
+            <article className="w-card">
+              <div className="w-thumb">
+                <img src="/kubernetes.png" alt="Data Structures article" />
+              </div>
+              <div className="w-body">
+                <p className="w-kicker">Technologies</p>
+                <h3 className="w-title">What is Kubernetes?</h3>
+                <p className="w-excerpt">An intro to K8s, where you can schedule and automate the deployment, management and scaling of containerized applications.</p>
+                <div className="w-actions">
+                  <a className="w-read" href="https://www.linkedin.com/pulse/data-structures-algorithms-madison-conway-r477e" target="_blank" rel="noreferrer">
+                    Read <FiExternalLink />
+                  </a>
+                </div>
+              </div>
+            </article>
           </div>
         </div>
       </section>
@@ -494,7 +516,7 @@ const Home = () => {
             <div className="contact-cta">
               <a
                 className="btn btn-ghost"
-                href="/Madison_Conway.pdf"
+                href="/MadisonConway.pdf"
                 download
               >
                 <FaPaperclip style={{ marginRight: 8 }} /> Download Resume
