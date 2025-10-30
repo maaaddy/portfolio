@@ -347,7 +347,7 @@ const Home = () => {
             tech: ["Phoenix", "Elixir", "Tailwind", "Nginx"],
             image: "./randomretail.jpg",
             github: "https://github.com/CS4140Team45/gregslist",
-            link: "https://randomretail.shop",
+            link: "https://random-retail.shop",
             write: "/projects/random-retail",
           },
           {

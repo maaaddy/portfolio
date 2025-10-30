@@ -23,7 +23,7 @@ const RandomRetail = () => {
     };
   }, []);
 
-  const LIVE_URL="https://randomretail.shop";
+  const LIVE_URL="https://random-retail.shop";
 
   return (
     <div className="min-vh-100 w-100 pt-5">
