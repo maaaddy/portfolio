@@ -462,14 +462,14 @@ const Home = () => {
 
             <article className="w-card">
               <div className="w-thumb">
-                <img src="/docker.png" alt="Data Structures article" />
+                <img src="/docker.png" alt="Docker article" />
               </div>
               <div className="w-body">
                 <p className="w-kicker">Technologies</p>
                 <h3 className="w-title">Understanding Docker</h3>
                 <p className="w-excerpt">Docker is a platform for building, running, and managing containers. But what does that actually mean?</p>
                 <div className="w-actions">
-                  <a className="w-read" href="https://www.linkedin.com/pulse/data-structures-algorithms-madison-conway-r477e" target="_blank" rel="noreferrer">
+                  <a className="w-read" href="https://www.linkedin.com/pulse/understanding-docker-madison-conway-qiafe" target="_blank" rel="noreferrer">
                     Read <FiExternalLink />
                   </a>
                 </div>
@@ -478,14 +478,14 @@ const Home = () => {
 
             <article className="w-card">
               <div className="w-thumb">
-                <img src="/kubernetes.png" alt="Data Structures article" />
+                <img src="/kubernetes.png" alt="Kubernetes article" />
               </div>
               <div className="w-body">
                 <p className="w-kicker">Technologies</p>
                 <h3 className="w-title">What is Kubernetes?</h3>
                 <p className="w-excerpt">An intro to K8s, where you can schedule and automate the deployment, management and scaling of containerized applications.</p>
                 <div className="w-actions">
-                  <a className="w-read" href="https://www.linkedin.com/pulse/data-structures-algorithms-madison-conway-r477e" target="_blank" rel="noreferrer">
+                  <a className="w-read" href="https://www.linkedin.com/pulse/what-kubernetes-madison-conway-jqloe" target="_blank" rel="noreferrer">
                     Read <FiExternalLink />
                   </a>
                 </div>
