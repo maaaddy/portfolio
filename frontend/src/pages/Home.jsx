@@ -262,7 +262,7 @@ const Home = () => {
 
               <div className="edu-item">
                 <strong>AWS Certified Cloud Practitioner (In Progress)</strong>
-                <small className="edu-meta">Expected September 2025</small>
+                <small className="edu-meta">Expected November 2025</small>
                 <ul className="edu-tags">
                   <li>EC2</li><li>S3</li><li>Lambda</li><li>Security</li>
                   <li>Cost optimization</li><li>Cloud architecture</li>
